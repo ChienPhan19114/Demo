@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Demo.Models.HoaDon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Creates">Create New</a>
+</p>
+<form asp-controller="HoaDon" asp-action="Index">
+    <p>
+        MaHD: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayLapHD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayNhanHang)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLapHD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayNhanHang)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaHD">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaHD">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaHD">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
